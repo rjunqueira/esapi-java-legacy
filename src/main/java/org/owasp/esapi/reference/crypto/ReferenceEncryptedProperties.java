@@ -240,15 +240,6 @@ public class ReferenceEncryptedProperties extends java.util.Properties implement
      */
     @SuppressWarnings({ "unchecked", "rawtypes" })
     @Override
-    public Set entrySet() {
-        throw new UnsupportedOperationException("This method has been removed for security.");
-    }
-
-    /**
-     * This method has been overridden to throw an {@code UnsupportedOperationException}
-     */
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    @Override
     public Enumeration elements() {
         throw new UnsupportedOperationException("This method has been removed for security.");
     }

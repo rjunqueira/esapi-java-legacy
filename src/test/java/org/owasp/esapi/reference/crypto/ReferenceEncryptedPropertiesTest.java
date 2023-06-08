@@ -482,13 +482,6 @@ public class ReferenceEncryptedPropertiesTest {
         }
 
         try {
-            Collection c = props.entrySet();
-            fail("testOverriddenMethods(): entrySet() did not result in expected Exception");
-        } catch( Exception e ) {
-            assertTrue( e instanceof UnsupportedOperationException );
-        }
-
-        try {
             Enumeration e = props.elements();
             fail("testOverriddenMethods(): elements() did not result in expected Exception");
         } catch( Exception e ) {

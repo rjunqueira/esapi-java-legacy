@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import jakarta.servlet.http.Cookie;
@@ -29,6 +30,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
+import org.hamcrest.CoreMatchers;
 import org.owasp.esapi.Authenticator;
 import org.owasp.esapi.ESAPI;
 import org.owasp.esapi.EncoderConstants;
@@ -464,7 +466,10 @@ public class HTTPUtilitiesTest extends TestCase
                     instance.addCookie( response, new Cookie( "tes<t3", "test3" ) );
                     fail("Expected IllegalArgumentException");
                 } catch (IllegalArgumentException iae) {
-                    assertThat(iae.getMessage(), is("Cookie name \"tes<t3\" is a reserved token"));
+                  assertThat(iae.getMessage(), CoreMatchers.anyOf(
+                          is("Cookie name \"tes<t3\" is a reserved token or contains an invalid character for a cookie name"),
+                          is("Le nom de cookie \"tes<t3\" est un \"token\" réservé")
+                  ));
                 }
 
         // test illegal value

@@ -16,6 +16,7 @@ package org.owasp.esapi.filters;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -406,7 +407,8 @@ public class SecurityWrapperRequestTest {
         assertNotEquals(stubCookies, cookies);
         assertEquals(1, cookies.length);
         Cookie resultCookie = cookies[0];
-        assertNotEquals(ck1, resultCookie);
+
+        assertNotSame(ck1, resultCookie);
         assertEquals(ck1.getName(), resultCookie.getName());
         assertEquals(ck1.getValue(), resultCookie.getValue());
         assertEquals(ck1.getDomain(), resultCookie.getDomain());
@@ -442,7 +444,7 @@ public class SecurityWrapperRequestTest {
         assertEquals(1, cookies.length);
         Cookie resultCookie1 = cookies[0];
 
-        assertNotEquals(ck1, resultCookie1);
+        assertNotSame(ck1, resultCookie1);
         assertEquals(ck1.getName(), resultCookie1.getName());
         assertEquals(ck1.getValue(), resultCookie1.getValue());
         assertEquals(ck1.getDomain(), resultCookie1.getDomain());
